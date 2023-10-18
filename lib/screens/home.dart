@@ -27,16 +27,16 @@ class _TodoListPageState extends State<TodoListPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Center(child: Text('Todo List')),
+        title: Center(child: Text('Todo List',style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.w500),)),
       ),
-      body: Visibility(
-        visible: isLoading,
-        child: Center(child: CircularProgressIndicator(),),
-        replacement: RefreshIndicator(
-          onRefresh: fetchTodo,
-          child: Visibility(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Visibility(
+          visible: isLoading,
+          child: Center(child: CircularProgressIndicator(),),
+          replacement: Visibility(
             visible: items.isNotEmpty,
-            replacement:Center(child: Text('No Todo Item',style: Theme.of(context).textTheme.headline3,),) ,
+            replacement:Center(child: Text('No Todo Item',style: TextStyle(fontFamily: 'Poppins',fontSize: 20),),) ,
             child: ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
@@ -45,8 +45,8 @@ class _TodoListPageState extends State<TodoListPage> {
                   return Card(
                     child: ListTile(
                       leading:CircleAvatar(child: Text('${index + 1}'),) ,
-                      title: Text(item['title']),
-                      subtitle: Text(item['description']),
+                      title: Text(item['title'],style: TextStyle(fontFamily: 'Poppins'),),
+                      subtitle: Text(item['description'],style: TextStyle(fontFamily: 'Poppins')),
                       trailing: PopupMenuButton(
                         onSelected: (value) {
                           if (value == 'edit') {
@@ -57,9 +57,9 @@ class _TodoListPageState extends State<TodoListPage> {
                         },
                         itemBuilder: (context) {
                           return[
-                            PopupMenuItem(child: Text('Edit'),value: 'edit',
+                            PopupMenuItem(child: Text('Edit',style: TextStyle(fontFamily: 'Poppins')),value: 'edit',
                             ),
-                            PopupMenuItem(child: Text('Delete'),value: 'delete',),
+                            PopupMenuItem(child: Text('Delete',style: TextStyle(fontFamily: 'Poppins')),value: 'delete',),
                           ];
                         },
                       ),
@@ -71,8 +71,10 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: navigateTodoAddPage, label: Text('Add Todo')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: navigateTodoAddPage,
+     child: Icon(Icons.add),// Specify the icon you want to use
+      ),
     );
   }
   Future<void> deleteById(String id ) async {
@@ -96,9 +98,9 @@ class _TodoListPageState extends State<TodoListPage> {
  Future <void> navigateTodoAddPage() async{
     final route = MaterialPageRoute(builder: (context) => AddTodoPage());
     await Navigator.push(context, route);
-    setState(() {
-      isLoading = true;
-    });
+    // setState(() {
+    //   isLoading = true;
+    // });
     fetchTodo();
   }
   Future <void> navigateToEditPage(Map item) async {
