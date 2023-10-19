@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapidemo/screens/add_page.dart';
+import 'package:todoapidemo/screens/create.dart';
 import 'package:todoapidemo/screens/home.dart';
 import 'package:todoapidemo/screens/splash.dart';
 import 'package:todoapidemo/utils/notification.dart';
@@ -20,7 +21,9 @@ class MyApp extends StatelessWidget {
 debugShowCheckedModeBanner: false,
 theme: ThemeData.dark(),
         routes: {
-          '/': (context) => SplashScreen(), // Task screen route
+          '/': (context) => SplashScreen(),
+          '/open': (context) => CustomScreen(),
+          // Task screen route
           '/home': (context) => TodoListPage(),
           '/todo':(context) => AddTodoPage()// Home screen route
         },

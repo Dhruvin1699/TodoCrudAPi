@@ -290,7 +290,10 @@ class _AddTodoPageState extends State<AddTodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEdit ? 'Edit Todo' : 'Add Todo',style: TextStyle(fontFamily: 'Poppins'),),
+        title: Padding(
+          padding: const EdgeInsets.all(99.0),
+          child: Text(isEdit ? 'Edit Todo' : 'Add Todo',style: TextStyle(fontFamily: 'Poppins'),),
+        ),
       ),
       body: GestureDetector(
         onTap: () {
@@ -304,6 +307,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
             child: ListView(
               children: [
                 TextFormField(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+                  },
                   textCapitalization: TextCapitalization.sentences,
                   controller: titleController,
                   validator: (value) {
@@ -331,6 +337,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
                 ),
                 SizedBox(height: 12),
                 TextFormField(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+                  },
                   textCapitalization: TextCapitalization.sentences,
                   controller: descriptionController,
                   validator: (value) {

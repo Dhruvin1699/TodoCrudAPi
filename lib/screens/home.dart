@@ -27,7 +27,10 @@ class _TodoListPageState extends State<TodoListPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Center(child: Text('Todo List',style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.w500),)),
+        title: Padding(
+          padding: const EdgeInsets.all(100.0),
+          child: Text('Todo List',style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.w500),),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -72,6 +75,7 @@ class _TodoListPageState extends State<TodoListPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white38,
         onPressed: navigateTodoAddPage,
      child: Icon(Icons.add),// Specify the icon you want to use
       ),

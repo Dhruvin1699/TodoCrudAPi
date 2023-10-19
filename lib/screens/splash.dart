@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapidemo/screens/create.dart';
 import 'package:todoapidemo/screens/home.dart';
 
 
@@ -13,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) {
           // Replace 'NextScreen' with the screen you want to navigate to.
-          return TodoListPage();
+          return CustomScreen();
         }),
       );
     });
